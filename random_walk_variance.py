@@ -9,7 +9,7 @@ fig, (ax1, ax2, ax3, ax4) = plt.subplots(4, 1, sharex = True)
 
 def var(t):
 
-    return t**2
+    return np.sqrt(t)
 
 X_list = []
 T_list = []
@@ -23,7 +23,7 @@ for j in range(4):
     X = [0]*N
 
     for i in range(1, N):
-        X[i] = X[i-1] + 1/np.sqrt(n)*rnd.gauss(0, 1) * var(t_grid[i])
+        X[i] = X[i-1] + 1/np.sqrt(n)*rnd.gauss(0, 1) * var(t_grid[i] - t_grid[i-1])
 
     X_list.append(X)
     T_list.append(t_grid)
